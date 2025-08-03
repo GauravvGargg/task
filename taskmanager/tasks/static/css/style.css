@@ -1,0 +1,78 @@
+.bg-red{
+    background-color: #8b0000;
+}
+.border-topheader{
+    border-top:2px dashed orange;
+    border-bottom: 2px dashed orange;
+}
+.bg-nav{
+    background-color: rgba(0, 0, 0, 0.489);
+}
+.text-justify{
+    text-align: justify;
+}
+.list-icon{
+    list-style-image: url('../img/arrow.png');
+}
+.foot>input{
+    border-radius: 20px 0px 0px 20px;
+}
+.foot>button{
+    border-radius: 0px 20px 20px 0px;
+}
+.help-btn{
+width: 200px;
+animation: ani 2s infinite;
+text-align: center;
+border-radius: 30px 30px 0px 0px;
+padding-top: 10px;
+position: fixed;
+top:35vh;
+right:-70px;
+transform: rotate(270deg);
+}
+.underline{
+    background-color: orange;
+    width:100px;
+    height:5px;
+    padding-top: 1px;
+}
+.underline>div{
+    width: 10px;
+    float: left;
+}
+.help-btn>p{
+    margin: 0px;
+    font-size: 14px;
+}
+@keyframes ani{
+    0%{
+        background-color: red;
+        color: white;
+    }
+    100%{
+        background-color: orange;
+        color: black;
+    }
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  height: 40px;
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+.ab-box {
+  padding-right: 4rem;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}

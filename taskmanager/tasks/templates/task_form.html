@@ -1,0 +1,90 @@
+
+
+
+{% extends 'task_list.html' %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+<span style="font-size: 30px; color: #8b0000;">Add Task     </span>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto ms-5 mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'task-list' %}">Tasks</a> 
+        </li>
+        
+        
+        <li class="nav-item mt-2">
+ <form action="{% url 'logout' %}" method="post" >
+    {% csrf_token %}
+    <button type="submit" style="background:none; border:none; cursor:pointer; padding:0;">Logout</button>
+</form>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+     <input type="text" name="q" placeholder="Search tasks..." value="{{ request.GET.q }}">
+    <button type="submit" class="bg-success">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<form method="post" class="p-4 rounded shadow bg-light w-75 mx-auto mt-4">
+    {% csrf_token %}
+    {% if msg %}
+      <p style="color:red;">{{ msg }}</p>
+    {% endif %}
+     <div class="mb-3">
+  <label for="title" class="form-label">Title </label>
+<input type="text" name="title" class="form-control" value="{{ task.title|default:'' }}" required />
+</div>
+
+<div class="mb-3">
+  <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" name="description">{{ task.description|default:'' }}</textarea>
+</div>
+
+<div class="mb-3">
+  <label for="date" class="form-label">Due Date</label>
+        <input type="date" class="form-control" name="due_date" value="{{ task.due_date|default:'' }}" required />
+</div>
+
+<div class="mb-3">
+  <label for="remarks" class="form-label">Remarks</label>
+        <textarea class="form-control" name="remarks">{{ task.remarks|default:'' }}</textarea>
+</div>
+<div class="mb-3">
+        <label class="form-label">Status</label>
+        <br>
+<input type="radio" name="status" value="active" {% if task.status == 'active' %}checked{% endif %}> Active    
+    <input type="radio" name="status" value="inactive" {% if task.status == 'inactive' %}checked{% endif %}> Inactive    </div>
+
+ <div class="text-center">
+    <button type="submit" class="btn btn-success me-2">Save</button>
+    <button type="reset" class="btn btn-danger">Clear</button>
+   
+  </div>
+
+</form>
+
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
