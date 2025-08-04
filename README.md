@@ -113,13 +113,3 @@ pip install django mysqlclient
    ```
 
 6. Access the app at `http://127.0.0.1:8000/`.
-
-## 2.1.3.6. General Documentation
-
-- All forms are custom HTML (no Django forms system).
-- User authentication is via Django’s default system, with manually processed forms.
-- All business logic is in views; all templates are in `/tasks/templates/`.
-- The application uses server-side rendering only.
-- Project is fully version controlled and hosted on GitHub.
-
-**This README structure exactly matches your assignment requirements and is ready to place in your `README.md`!**
