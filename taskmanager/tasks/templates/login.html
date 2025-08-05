@@ -1,0 +1,48 @@
+
+
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container mb-5 mt-3">
+<div class="row">
+  <div class="col-sm-6">
+          <img src="{% static 'images/login.svg' %}"  alt="Logo">
+
+  </div>
+  <div class="col-sm-6 mt-5">
+ 
+
+<form method="post" class="p-4 rounded shadow bg-light w-75 mx-auto mt-4">
+  <h3 class="text-primary" style=" text-align: center;">Login</h3>
+
+    {% csrf_token %}
+    {% if msg %}
+      <p style="color:red;">{{ msg }}</p>
+      
+    {% endif %}
+     <div class="mb-3">
+    <label for="userid" class="form-label">Enter User ID </label>
+    <input type="userid" name="userid" id="userid" class="form-control"  required>
+  </div>
+  
+<div class="mb-3">
+    <label for="password" class="form-label">Enter Password</label>
+    <input type="password" name="password" id="password" class="form-control"  required>
+  </div>
+<br>
+    
+ <div class="text-center">
+    <button type="submit" class="btn btn-success me-2">Submit</button>
+    <button type="reset" class="btn btn-danger">Clear</button>
+ <br>
+<br>
+    <a href="{% url 'register' %}">Sign Up</a>
+  
+  </div>
+
+</form>
+</div>
+</div>
+</div>
+{% endblock %}

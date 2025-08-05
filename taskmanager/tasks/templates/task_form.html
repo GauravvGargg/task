@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+
+  <!-- Header Section -->
+  <div class="row align-items-center py-3">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1 logo-img text-center">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" height="100">
+    </div>
+    <div class="col-sm-6">
+      <div class="ms-4 mt-2">
+        <h4 class="text-primary"><strong>Task Management</strong></h4>
+      </div>
+    </div>
+    <div class="col-sm-4 justify-content-end">
+      <form role="search">
+        <input type="text" name="q" placeholder="Search tasks..." value="{{ request.GET.q }}">
+        <button type="submit" class="bg-success btn text-light">Search</button>
+      </form>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="row" style="background-color: #636363;">
+
+    
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse nav-tabs" id="navbarNavAltMarkup">
+          <div class="navbar-nav mx-auto">
+            <a class="nav-link text-white mx-3" href="{% url 'task-list' %}"><i class="fa-solid fa-thumbtack"></i> Tasks</a>
+            <a class="nav-link text-white mx-3" href="{% url 'add-task' %}"><i class="fa-solid fa-list-check"></i> Add Task</a>
+            <form action="{% url 'logout' %}" method="post" class="d-inline mx-3 mt-2">
+              {% csrf_token %}
+              <button type="submit" class="nav-link text-white bg-transparent border-0 p-0" style="cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</div>
+
+<div class="container-fluid" style="min-height: 600px; background-image: url('{% static "images/w.png" %}'); background-size: cover; background-position: center;" data-aos="fade-up">
+
+  <div class="row g-3 m-1" style="height:250px;">
+     
+<form method="post" class="p-4 rounded shadow  w-75 mx-auto mt-4" style="background-color: hsla(240, 100%, 80%, 0.205);">
+    {% csrf_token %}
+    {% if msg %}
+      <p style="color:red;">{{ msg }}</p>
+    {% endif %}
+    
+     <div class="mb-3">
+  <label for="title" class="form-label">Title </label>
+<input type="text" name="title" class="form-control" value="{{ task.title|default:'' }}" required />
+</div>
+
+<div class="mb-3">
+  <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" name="description">{{ task.description|default:'' }}</textarea>
+</div>
+
+<div class="mb-3">
+  <label for="date" class="form-label">Due Date</label>
+        <input type="date" class="form-control" name="due_date" value="{{ task.due_date|default:'' }}" required />
+</div>
+
+<div class="mb-3">
+  <label for="remarks" class="form-label">Remarks</label>
+        <textarea class="form-control" name="remarks">{{ task.remarks|default:'' }}</textarea>
+</div>
+<div class="mb-3">
+        <label class="form-label">Status</label>
+        <br>
+<input type="radio" name="status" value="active" {% if task.status == 'active' %}checked{% endif %}> Active    
+    <input type="radio" name="status" value="inactive" {% if task.status == 'inactive' %}checked{% endif %}> Inactive    </div>
+
+ <div class="text-center">
+    <button type="submit" class="btn btn-success me-2">Save</button>
+    <button type="reset" class="btn btn-danger">Clear</button>
+   
+  </div>
+
+</form>
+
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+  <footer class="text-center text-white w-100" style="background-color: #0a4275;">
+    <div class="container p-4 pb-0">
+      <section>
+        <p class="d-flex justify-content-center align-items-center mb-0">
+          <span class="me-3">Register for free</span>
+          <a href="{% url 'register' %}" class="btn btn-outline-light btn-rounded">
+            Sign up!
+          </a>
+        </p>
+      </section>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © {{ now|date:"Y" }} Copyright: Gaurav Garg
+    </div>
+  </footer>
+  </div>
+</div>
+{% endblock %}

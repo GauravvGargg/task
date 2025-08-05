@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+
+  <!-- Header Section -->
+  <div class="row align-items-center py-3">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-1 logo-img text-center">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" height="100">
+    </div>
+    <div class="col-sm-6">
+      <div class="ms-4 mt-2">
+        <h4 class="text-primary"><strong>Task Management</strong></h4>
+      </div>
+    </div>
+    <div class="col-sm-4 justify-content-end">
+      <form role="search">
+        <input type="text" name="q" placeholder="Search tasks..." value="{{ request.GET.q }}">
+        <button type="submit" class="bg-success btn text-light">Search</button>
+      </form>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="row" style="background-color: #636363;">
+
+    
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse nav-tabs" id="navbarNavAltMarkup">
+          <div class="navbar-nav mx-auto">
+            <a class="nav-link text-white mx-3" href="{% url 'task-list' %}"><i class="fa-solid fa-thumbtack"></i> Tasks</a>
+            <a class="nav-link text-white mx-3" href="{% url 'add-task' %}"><i class="fa-solid fa-list-check"></i> Add Task</a>
+            <form action="{% url 'logout' %}" method="post" class="d-inline mx-3 mt-2">
+              {% csrf_token %}
+              <button type="submit" class="nav-link text-white bg-transparent border-0 p-0" style="cursor:pointer;"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</div>
+
+<div class="container-fluid" style="min-height: 600px; background-image: url('{% static "images/wall.jpg" %}'); background-size: cover; background-position: center;" data-aos="fade-up">
+
+  <div class="row g-3 m-1" style="height:250px;">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr style="text-align: center;">
+          <th>Title</th>
+          <th>Due Date</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr style="text-align: center;">
+          <td style="background-color: hsla(240, 100%, 50%, 0);">{{ task.title }}</td>
+          <td style="background-color: hsla(240, 100%, 50%, 0);">{{ task.due_date }}</td>
+          <td style="background-color: hsla(240, 100%, 50%, 0);">{{ task.status }}</td>
+          <td style="background-color: hsla(240, 100%, 50%, 0);">
+            <a href="{% url 'edit-task' task.id %}" class="btn btn-success">Edit</a>
+          </td>
+          <td style="background-color: hsla(240, 100%, 50%, 0);">
+            <a href="{% url 'delete-task' task.id %}" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="5" class="text-center text-muted">No records found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+  <footer class="text-center text-white w-100" style="background-color: #0a4275;">
+    <div class="container p-4 pb-0">
+      <section>
+        <p class="d-flex justify-content-center align-items-center mb-0">
+          <span class="me-3">Register for free</span>
+          <a href="{% url 'register' %}" class="btn btn-outline-light btn-rounded">
+            Sign up!
+          </a>
+        </p>
+      </section>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © {{ now|date:"Y" }} Copyright: Gaurav Garg
+    </div>
+
+  </footer>
+</div>
+</div>
+{% endblock %}
