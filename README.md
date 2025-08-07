@@ -62,10 +62,7 @@ erDiagram
     USER ||--o{ TASK : "updates"
     USER ||--o{ TASK : "deletes"
 ```
-```
-[![ER Diagram]()
-](https://kroki.io/mermaid/svg/eNqVU01vwjAMve9XWDnBAWmaxGU3NECaugMacK5MY5hHv5akEwj235ePUspaIS2HxI3fsx0_l9SUcacwewC71svZO5y86RbnBljCIgKxUJyhOkJER9H4tVGc76DSpHLMCMQ656-KmosOkjLkFMTMHyilIq07oC0rbeIQcO5s6I2VYoN6ww5IoiHD1umM-LPgnCSISZIUlX1UoggNF7n3XkmbokgJc2AdY2L4m64MbdBUuhdqXdstiKU_7uGqkpRrjcU2Zhv_43e_rSbL6P9CGDaprXmFel_bgwwP8DQeQ_KBSg-vDEMHA5J0orj0nRBTMlYV2yXj6C3XbVNBVhR7I-SRhDK13e0UE15Wo-oPX874sb8aZadD7S1jIiW7xJg2d4OiDDfDHom9miRj94qXi7LOY7NmZQ-hKmVD8LMTLvo4fJkWC98cYyvCPKqzFMoPOrxOb-GX6Fd4K8cfTkty_--dz6NRcQryP4MImevx6AOEoHcAklJygF_Xqy9g)
-```
+![ER Diagram](https://kroki.io/mermaid/svg/eNqVU01vwjAMve9XWDnBAWmaxGU3NECaugMacK5MY5hHv5akEwj235ePUspaIS2HxI3fsx0_l9SUcacwewC71svZO5y86RbnBljCIgKxUJyhOkJER9H4tVGc76DSpHLMCMQ656-KmosOkjLkFMTMHyilIq07oC0rbeIQcO5s6I2VYoN6ww5IoiHD1umM-LPgnCSISZIUlX1UoggNF7n3XkmbokgJc2AdY2L4m64MbdBUuhdqXdstiKU_7uGqkpRrjcU2Zhv_43e_rSbL6P9CGDaprXmFel_bgwwP8DQeQ_KBSg-vDEMHA5J0orj0nRBTMlYV2yXj6C3XbVNBVhR7I-SRhDK13e0UE15Wo-oPX874sb8aZadD7S1jIiW7xJg2d4OiDDfDHom9miRj94qXi7LOY7NmZQ-hKmVD8LMTLvo4fJkWC98cYyvCPKqzFMoPOrxOb-GX6Fd4K8cfTkty_--dz6NRcQryP4MImevx6AOEoHcAklJygF_Xqy9g)
 
 
 ## Relationship Explanations
