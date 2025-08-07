@@ -35,10 +35,10 @@ This ER diagram represents the database structure for the Task Management applic
 erDiagram
     USER {
         int id PK "Primary Key"
-        string username "Unique username"
-        string email "Email address"
-        string first_name "First name"
-        string last_name "Last name"
+        varchar username "Unique username"
+        varchar email "Email address"
+        varchar first_name "First name"
+        varchar last_name "Last name"
         datetime date_joined "Account creation date"
         boolean is_active "Account status"
         boolean is_staff "Staff status"
@@ -47,10 +47,10 @@ erDiagram
     
     TASK {
         int id PK "Primary Key"
-        string title "Task title (max 255 chars)"
+        varchar title "Task title (max 255 chars)"
         text description "Detailed task description"
         date due_date "Task deadline"
-        string status "Task status (max 50 chars)"
+        varchar status "Task status (max 50 chars)"
         text remarks "Additional remarks (optional)"
         datetime created_on "Creation timestamp"
         datetime updated_on "Last update timestamp"
