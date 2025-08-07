@@ -27,11 +27,10 @@ Task
 └── updated_by (FK → User)
 ```
 
-```
 # Task Management System - Entity Relationship Diagram
 
 This ER diagram represents the database structure for the Task Management application using crow's foot notation.
-
+```
 mermaid
 erDiagram
     USER {
@@ -62,6 +61,7 @@ erDiagram
     USER ||--o{ TASK : "creates"
     USER ||--o{ TASK : "updates"
     USER ||--o{ TASK : "deletes"
+```
 
 
 ## Relationship Explanations
@@ -76,7 +76,7 @@ erDiagram
 - Timestamps automatically track creation and modification times
 - Users have full CRUD operations on their tasks
 - Foreign key relationships maintain data integrity
-```
+
 
 ### 2.1.3.2.2. Data Dictionary
 
