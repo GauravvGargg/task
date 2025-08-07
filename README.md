@@ -27,6 +27,57 @@ Task
 └── updated_by (FK → User)
 ```
 
+```
+# Task Management System - Entity Relationship Diagram
+
+This ER diagram represents the database structure for the Task Management application using crow's foot notation.
+
+mermaid
+erDiagram
+    USER {
+        int id PK "Primary Key"
+        string username "Unique username"
+        string email "Email address"
+        string first_name "First name"
+        string last_name "Last name"
+        datetime date_joined "Account creation date"
+        boolean is_active "Account status"
+        boolean is_staff "Staff status"
+        boolean is_superuser "Superuser status"
+    }
+    
+    TASK {
+        int id PK "Primary Key"
+        string title "Task title (max 255 chars)"
+        text description "Detailed task description"
+        date due_date "Task deadline"
+        string status "Task status (max 50 chars)"
+        text remarks "Additional remarks (optional)"
+        datetime created_on "Creation timestamp"
+        datetime updated_on "Last update timestamp"
+        int created_by_id FK "Creator user ID"
+        int updated_by_id FK "Last updater user ID"
+    }
+    
+    USER ||--o{ TASK : "creates"
+    USER ||--o{ TASK : "updates"
+    USER ||--o{ TASK : "deletes"
+
+
+## Relationship Explanations
+
+- *USER creates TASK*: One-to-Many relationship where one user can create multiple tasks
+- *USER updates TASK*: One-to-Many relationship where one user can update multiple tasks  
+- *USER deletes TASK*: One-to-Many relationship where one user can delete multiple tasks
+
+## Key Features
+
+- Each task tracks both the creator (created_by) and last updater (updated_by)
+- Timestamps automatically track creation and modification times
+- Users have full CRUD operations on their tasks
+- Foreign key relationships maintain data integrity
+```
+
 ### 2.1.3.2.2. Data Dictionary
 
 | Field Name   | Type         | Description                          |
